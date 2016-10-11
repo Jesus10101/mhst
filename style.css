@@ -1,0 +1,40 @@
+* {
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
+
+body {
+  padding-top: 70px;
+  /*background: #508eff;
+  color: white;*/
+  /*font: 30px sans-serif;*/
+}
+
+/*canvas {
+    width: 416px;
+    height: auto;
+}*/
+
+
+.table-align-right td {
+  text-align: right;
+}
+
+#list-item input {
+  width: 100%;
+  height: 100%;
+  text-align: right;
+}
+/** http://qiita.com/Eai/items/bd200deb170a2eb0a26c
+.nav>li {
+    float: left;
+    display: inline-block;
+}
+.navbar-nav {
+    margin: 0;
+}
+.navbar-nav>li>a {
+    padding-top: 14.5px;
+    padding-bottom: 14.5px;
+}

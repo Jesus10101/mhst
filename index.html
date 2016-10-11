@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>MHST -Hunter's Savedata Tool-</title>
+    <!-- BootstrapのCSS読み込み -->
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+    <link href="./style.css" rel="stylesheet">
+  </head>
+  <body>
+    <nav class="navbar navbar-default navbar-fixed-top">
+      <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+            <span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="#">MHST</a>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+          <ul class="nav navbar-nav">
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown">ファイル <span class="caret"></span></a>
+              <ul class="dropdown-menu">
+                <li><a href="javascript:void(0);" onclick="$('#file_input').click();">開く</a></li>
+                <li><a href="javascript:void(0);" onclick="saveFile();">保存</a></li>
+                <li class="divider"></li>
+                <li><a href="#">現在 <span id="file_name">(なし)</span>　を編集中</a></li>
+              </ul>
+            </li>
+          </ul>
+          <ul class="nav navbar-nav navbar-right">
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown">JUMP <span class="caret"></span></a>
+              <ul class="dropdown-menu">
+                <li><a href="#value_name">主人公</a></li>
+                <li><a href="#panel_item">アイテム</a></li>
+                <li class="divider"></li>
+                <li><a href="#">現在 <span id="file_name">(なし)</span>　を編集中</a></li>
+              </ul>
+            </li>
+          </ul>
+        </div><!-- /.navbar-collapse -->
+      </div><!-- /.container-fluid -->
+    </nav>
+    <div class="container">
+      <div class="col-md-5">
+        <div class="input-group input-group-sm">
+          <span class="input-group-addon" id="sizing-addon3">名前</span>
+          <input type="text" id="value_name" class="form-control" placeholder="現在、未対応" aria-describedby="sizing-addon3">
+        </div>
+        <div class="input-group input-group-sm">
+          <span class="input-group-addon" id="sizing-addon3">所持金</span>
+          <input type="text" id="value_zenny" class="form-control" placeholder="" aria-describedby="sizing-addon3">
+          <span class="input-group-addon" id="sizing-addon3">z</span>
+        </div>
+        <p></p>
+      </div>
+
+      <div class="col-md-7" style="">
+        <div class="panel panel-default" id="panel_item">
+          <div class="panel-heading">アイテムリスト</div>
+          <div class="panel-body">
+            <table id="list_item" class="table table-align-right">
+              <thead>
+                <tr>
+                  <th>#</th>
+                  <th>ｱﾄﾞﾚｽ</th>
+                  <th>ｱｲﾃﾑ位置</th>
+                  <th>ｱｲﾃﾑID</th>
+                  <th>ｱｲﾃﾑ名</th>
+                  <th>個数</th>
+                </tr>
+              </thead>
+              <tbody>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+      </div>
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script> <!-- jQuery読み込み -->
+      <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script> <!-- BootstrapのJS読み込み -->
+      <script src="./itemlist.js"></script>
+      <script src="./main.js"></script>
+  </body>
+</html>
