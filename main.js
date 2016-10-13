@@ -1,7 +1,8 @@
 var isLE = true;
+var data = void(0);
+var data_edited = void(0);
 var file = void(0);
 var fileBuf = void(0);
-var data = {};
 var reader = new FileReader();
 $(document.body).append('<input type="file" id="file_input" style="display:none;">');
 
@@ -10,9 +11,24 @@ $( function() {
   $('input').val('');
 
   $('#file_input').change(function(){ // ファイルが選択された時
+    data = {};
+    data_edited = {};
     file = this.files[0];
     $('#file_name').html(file.name);
     reader.readAsArrayBuffer(file);
+  });
+
+  $('[data-edit]').change(function(){ // ファイルが選択された時
+    if(data === void(0)) return;
+    var target = $(this).data('edit');
+    data_edited[target] = $(this).val();
+  });
+
+  $('#button_exp_max').click(function(){
+    if(data === void(0)) return;
+    $('#value_lv').val(99);
+    $('#value_exp').val(25165822);
+    $('#value_lv, #value_exp').change();
   });
 });
 
@@ -21,20 +37,28 @@ reader.onload = function(evt){
 
 	var dataView = new DataView( fileBuf );
 
-  // 所持金を抽出
-	data.zenny = dataView.getUint32(0x5B404, isLE);
-  $('#value_zenny').val(data.zenny);
-
   // 名前を抽出（MHX）
   /*var nameBuf = fileBuf.slice(0xc7a1c, 0xc7a1c+32);
   window.example = nameBuf;
   data.name = new TextDecoder().decode(nameBuf).replace(/\x00/g, "");
   $('#value_name').val(data.name);*/
 
+  // 所持金を抽出
+	data.zenny = dataView.getUint32(0x5B404, isLE);
+  $('#value_zenny').val(data.zenny);
+
+  data.lv = dataView.getUint8(0x9E64, isLE);
+  $('#value_lv').val(data.lv);
+
+  data.exp = dataView.getUint32(0x9E68, isLE);
+  $('#value_exp').val(data.exp);
+
+  // アイテム抽出（変数セット→ループ）
   var count = 1;
   data.item = {};
-  data.item_changed = {};
+  data_edited.item = {};
   data.item_pos = {};
+
   for(var pos=0; pos<=1496; pos++) {
     var addr = 0x10 + 8*pos;
     var id = dataView.getUint16( addr , isLE );
@@ -59,7 +83,7 @@ reader.onload = function(evt){
       value = parseInt(value);
       if( !(0 < value && value < 1000) ) {alert('正常な値（1-999個）を入力してください'); return}
 
-      data.item_changed[id] = value;
+      data_edited.item[id] = value;
       $(this).html(value);
     });
     count++;
@@ -76,9 +100,11 @@ function saveFile() {
   }*/
   var dataView_new = new DataView(fileBuf_new);
 
-  if(data.zenny != $('#value_zenny').val()) dataView_new.setUint32(0x5B404, parseInt($('#value_zenny').val(), 10), isLE); // 所持金の場合
+  if('zenny' in data_edited) dataView_new.setUint32(0x5B404, parseInt(data_edited.zenny), isLE); // 所持金の場合
+  if('lv' in data_edited) dataView_new.setUint8(0x9E64, parseInt(data_edited.lv), isLE); // レベルの場合
+  if('exp' in data_edited) dataView_new.setUint32(0x9E68, parseInt(data_edited.exp), isLE); // 経験値の場合
 
-  $.each(data.item_changed, function(id, val){ // アイテムの場合
+  $.each(data_edited.item, function(id, val){ // アイテムの場合
     var pos = data.item_pos[id];
     var addr = 0x10 + 8*(pos) + 2;
     alert(data.item[id] !== val);
@@ -103,17 +129,6 @@ function makeBlob(fileName, data) {
           evt.initEvent("click", false, true);
           aelm.dispatchEvent(evt);
       }
-  }
-}
-
-function writeValue(buffer, name, value) {
-  switch (name) {
-    case 'name':
-      break;
-    case "zenny": // 所持金の場合
-      break;
-    default:
-
   }
 }
 

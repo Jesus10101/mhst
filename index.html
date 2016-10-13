@@ -37,7 +37,7 @@
             <li class="dropdown">
               <a href="#" class="dropdown-toggle" data-toggle="dropdown">JUMP <span class="caret"></span></a>
               <ul class="dropdown-menu">
-                <li><a href="#value_name">主人公</a></li>
+                <li><a href="#jump_hero">主人公</a></li>
                 <li><a href="#panel_item">アイテム</a></li>
               </ul>
             </li>
@@ -46,45 +46,65 @@
       </div><!-- /.container-fluid -->
     </nav>
     <div class="container">
-      <div class="col-md-5">
-        <div class="input-group input-group-sm">
-          <span class="input-group-addon" id="sizing-addon3">名前</span>
-          <input type="text" id="value_name" class="form-control" placeholder="現在、未対応" aria-describedby="sizing-addon3">
-        </div>
-        <div class="input-group input-group-sm">
-          <span class="input-group-addon" id="sizing-addon3">所持金</span>
-          <input type="text" id="value_zenny" class="form-control" placeholder="" aria-describedby="sizing-addon3">
-          <span class="input-group-addon" id="sizing-addon3">z</span>
-        </div>
-        <p></p>
-      </div>
-
-      <div class="col-md-7" style="">
-        <div class="panel panel-default" id="panel_item">
-          <div class="panel-heading">アイテムリスト</div>
-          <div class="panel-body">
-            <table id="list_item" class="table table-align-right">
-              <thead>
-                <tr>
-                  <th>#</th>
-                  <th>ｱﾄﾞﾚｽ</th>
-                  <th>ｱｲﾃﾑ位置</th>
-                  <th>ｱｲﾃﾑID</th>
-                  <th>ｱｲﾃﾑ名</th>
-                  <th>個数</th>
-                </tr>
-              </thead>
-              <tbody>
-              </tbody>
-            </table>
-            <p>個数をクリックして編集できます</p>
+      <div class="row">
+        <div id="jump_hero" class="col-md-6">
+          <div class="panel panel-default" id="panel_item">
+            <div class="panel-heading">主人公</div>
+            <div class="panel-body">
+              <div class="input-group input-group-sm">
+                <span class="input-group-addon" id="sizing-addon3">名前</span>
+                <input type="text" id="value_name" class="form-control" placeholder="現在、未対応" aria-describedby="sizing-addon3">
+              </div>
+              <div class="input-group input-group-sm">
+                <span class="input-group-addon" id="sizing-addon3">所持金</span>
+                <input type="text" id="value_zenny" data-edit="zenny" class="form-control" placeholder="" aria-describedby="sizing-addon3">
+                <span class="input-group-addon" id="sizing-addon3">z</span>
+              </div>
+              <div class="input-group input-group-sm">
+                <span class="input-group-addon" id="sizing-addon3">レベル</span>
+                <input type="text" id="value_lv" data-edit="lv" class="form-control" aria-describedby="sizing-addon3">
+              </div>
+              <div class="input-group input-group-sm">
+                <span class="input-group-addon" id="sizing-addon3">経験値</span>
+                <input type="text" id="value_exp" data-edit="exp" class="form-control" aria-describedby="sizing-addon3">
+                <span class="input-group-btn">
+                  <button id="button_exp_max" class="btn btn-default" type="button">MAX</button>
+                </span>
+              </div>
+            </div>
           </div>
         </div>
       </div>
+
+      <div class="row">
+        <div class="col-md-6" style="">
+          <div class="panel panel-default" id="panel_item">
+            <div class="panel-heading">アイテムリスト</div>
+            <div class="panel-body">
+              <table id="list_item" class="table table-align-right">
+                <thead>
+                  <tr>
+                    <th>#</th>
+                    <th>ｱﾄﾞﾚｽ</th>
+                    <th>ｱｲﾃﾑ位置</th>
+                    <th>ｱｲﾃﾑID</th>
+                    <th>ｱｲﾃﾑ名</th>
+                    <th>個数</th>
+                  </tr>
+                </thead>
+                <tbody>
+                </tbody>
+              </table>
+              <p>個数をクリックして編集できます</p>
+            </div>
+          </div>
+        </div>
       </div>
-      <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script> <!-- jQuery読み込み -->
-      <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script> <!-- BootstrapのJS読み込み -->
-      <script src="./itemlist.js"></script>
-      <script src="./main.js"></script>
+
+    </div>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script> <!-- jQuery読み込み -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script> <!-- BootstrapのJS読み込み -->
+    <script src="./itemlist.js"></script>
+    <script src="./main.js"></script>
   </body>
 </html>
