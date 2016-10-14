@@ -24,12 +24,12 @@
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
           <ul class="nav navbar-nav">
             <li class="dropdown">
-              <a href="#" class="dropdown-toggle" data-toggle="dropdown">ファイル <span class="caret"></span></a>
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown">File <span class="caret"></span></a>
               <ul class="dropdown-menu">
-                <li><a href="javascript:void(0);" onclick="$('#file_input').click();">開く</a></li>
-                <li><a href="javascript:void(0);" onclick="saveFile();">保存</a></li>
+                <li><a href="javascript:void(0);" onclick="$('#file_input').click();">Open File</a></li>
+                <li><a href="javascript:void(0);" onclick="saveFile();">Save File</a></li>
                 <li class="divider"></li>
-                <li class="disabled"><a href="javascript:void(0);">現在 <span id="file_name">(なし)</span>　を編集中</a></li>
+                <li class="disabled"><a href="javascript:void(0);">Current <span id="file_name">(None)</span>　Editing</a></li>
               </ul>
             </li>
           </ul>
@@ -37,8 +37,8 @@
             <li class="dropdown">
               <a href="#" class="dropdown-toggle" data-toggle="dropdown">JUMP <span class="caret"></span></a>
               <ul class="dropdown-menu">
-                <li><a href="#jump_hero">主人公</a></li>
-                <li><a href="#panel_item">アイテム</a></li>
+                <li><a href="#jump_hero">Player</a></li>
+                <li><a href="#panel_item">Item</a></li>
               </ul>
             </li>
           </ul>
@@ -86,7 +86,7 @@
                   <tr>
                     <th>#</th>
                     <th>ｱﾄﾞﾚｽ</th>
-                    <th>ｱｲﾃﾑ位置</th>
+                    <th>Item position</th>
                     <th>ｱｲﾃﾑID</th>
                     <th>ｱｲﾃﾑ名</th>
                     <th>個数</th>
@@ -95,7 +95,7 @@
                 <tbody>
                 </tbody>
               </table>
-              <p>個数をクリックして編集できます</p>
+              <p>You can edit by clicking on the number</p>
             </div>
           </div>
         </div>
