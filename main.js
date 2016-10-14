@@ -7,7 +7,7 @@ var reader = new FileReader();
 $(document.body).append('<input type="file" id="file_input" style="display:none;">');
 
 $( function() {
-  if(!isCompatible()) alert("お使いのブラウザは対応していません。\n推奨ブラウザはFireFox、Chromeの最新バージョンです。\n\n正常に使用できずセーブデータが破損する可能性があります。対応ブラウザにてご使用ください。")
+  if(!isCompatible()) alert("Your browser does not support this website. Recommended browsers are FireFox and Chrome. \n\nSave data might end up being corrupted so ALWAYS MAKE A BACKUP.")
   $('input').val('');
 
   $('#file_input').change(function(){ // ファイルが選択された時
